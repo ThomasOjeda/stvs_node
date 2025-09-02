@@ -1,0 +1,39 @@
+{
+  "name": "studentvisorbackend",
+  "version": "1.0.0",
+  "description": "This is the backend project for the Student Visor Project. This project is aimed at contributing to the easy visualization of student data and relevant derived information.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasOjeda/StudentVisorBackend.git"
+  },
+  "author": "Thomas Ojeda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomasOjeda/StudentVisorBackend/issues"
+  },
+  "homepage": "https://github.com/ThomasOjeda/StudentVisorBackend#readme",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-async-errors": "^3.1.1",
+    "file-type": "^19.6.0",
+    "helmet": "^8.0.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^11.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
