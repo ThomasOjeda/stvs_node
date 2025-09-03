@@ -15,6 +15,7 @@ const createDataFolders = require("./utils/create-data-folders");
 const retry = require("./utils/retry-connection");
 const startupTag = require("./utils/startup-tags");
 const path = require("path");
+const healthcheck = require("./healthcheck");
 //const https = require("https");
 //const fs = require("fs");
 
@@ -38,6 +39,10 @@ app.use("/api/version", (req, res) => {
 });
 
 app.use("/api", resourceNotFound);
+
+//Implement basic health check for this server, python and mongo
+app.get("/health", healthcheck)
+
 app.get("*", (req, res) => {
   //Needed if this server serves the angular application
   res.sendFile(path.join(__dirname, "/dist/student-visor-frontend/browser/index.html"));
