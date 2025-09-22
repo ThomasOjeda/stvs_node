@@ -14,7 +14,6 @@ const masterAuthentication = require("./apimaster/middleware/master-authenticati
 const createDataFolders = require("./utils/create-data-folders");
 const retry = require("./utils/retry-connection");
 const startupTag = require("./utils/startup-tags");
-const path = require("path");
 const healthcheck = require("./healthcheck");
 //const https = require("https");
 //const fs = require("fs");
@@ -35,22 +34,20 @@ app.use("/api/v1", apiRouter);
 app.use("/api/master", masterAuthentication, masterRouter);
 app.use("/api/version", (req, res) => {
   res.status = 200;
-  res.send("13-10-23_v2_v4");
+  res.send("21-09-25_1.0");
 });
+//Implement basic health check for this server, python and mongo
+app.get("/api/health", healthcheck);
 
 app.use("/api", resourceNotFound);
 
-//Implement basic health check for this server, python and mongo
-app.get("/health", healthcheck)
 
 app.get("*", (req, res) => {
   //Needed if this server serves the angular application
-  res.sendFile(path.join(__dirname, "/dist/student-visor-frontend/browser/index.html"));
-});
-/* app.get("*", (req, res) => {
+  //res.sendFile(path.join(__dirname, "/dist/student-visor-frontend/browser/index.html"));
   res.status = 404;
   res.send("Requested resource does not exist");
-}); */
+});
 app.use(errorHandler);
 
 const start = async () => {
